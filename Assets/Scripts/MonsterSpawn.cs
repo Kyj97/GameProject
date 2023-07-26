@@ -13,6 +13,7 @@ public class MonsterSpawn : MonoBehaviour
     void Start()
     {
         RandomSelectSpawnPoint();
+        camera = GetComponent<Camera>();
 
     }
 

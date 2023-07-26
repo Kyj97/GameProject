@@ -10,8 +10,9 @@ public class TargetSelect : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI totalText;
     public TextMeshProUGUI infoText;
+    public GameObject me;
     public static int scoreCount;
-    public static int totalCount = 3;
+    public static int totalCount = 5;
     public float fadeTime = 2f;
 
 
@@ -19,6 +20,7 @@ public class TargetSelect : MonoBehaviour
     {
         
         scoreText.text = scoreCount.ToString();
+        totalText.text = totalCount.ToString();
     }
 
     // Update is called once per frame
@@ -30,14 +32,14 @@ public class TargetSelect : MonoBehaviour
 
     public void ScoreUp()
     {
-        if (totalCount > 0)
+        if (totalCount > 1)
         {
             infoText.text = "correct!";
             PadeIn();
-            Invoke("PadeOut", 2);
             scoreCount += 10;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             totalCount -= 1;
+            Destroy(me);
             totalText.text = totalCount.ToString();
             scoreText.text = scoreCount.ToString();
         }
